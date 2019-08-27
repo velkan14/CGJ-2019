@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Entity",
 "language": "GDScript",
 "path": "res://entities/Entity.gd"
+}, {
+"base": "Panel",
+"class": "TextBox",
+"language": "GDScript",
+"path": "res://TextBox.gd"
 } ]
 _global_script_class_icons={
-"Entity": ""
+"Entity": "",
+"TextBox": ""
 }
 
 [application]
