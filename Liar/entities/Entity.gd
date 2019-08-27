@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+class_name Entity
+
 var isDead = false
 
 var moveDirection = Vector2()

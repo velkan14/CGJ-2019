@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Entity",
+"language": "GDScript",
+"path": "res://entities/Entity.gd"
+} ]
 _global_script_class_icons={
-
+"Entity": ""
 }
 
 [application]
@@ -19,6 +24,18 @@ config/name="Liar"
 run/main_scene="res://Test.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=240
+window/size/height=160
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "GodotTIE" )
+
 [rendering]
 
+quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"
