@@ -3,9 +3,8 @@
 [ext_resource path="res://entities/Entity.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 35.5509
-height = 10.8046
+[sub_resource type="CircleShape2D" id=1]
+radius = 31.0
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )

@@ -21,4 +21,4 @@ func moveInputs():
 
 func move():
 	var dir = moveDirection.normalized() * speed
-	move_and_slide(dir, Vector2())
+	move_and_slide_with_snap(dir, Vector2())
