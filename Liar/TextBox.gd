@@ -30,11 +30,16 @@ func _process(delta):
 		animation.play("idle")
 		emit_signal("text_accepted")
 
-func write_text(text):
+func write_text(text : String):
+	var char_time = 0.04
+	print(text.length())
+	if text.length() > 50:
+		char_time = 0.02
 	self.show()
 	tie.reset()
+	
 	tie.set_color(Color(1,1,1))
-	tie.buff_text(text, 0.04)
+	tie.buff_text(text, char_time)
 	tie.buff_silence(0.04)
 	tie.set_state(tie.STATE_OUTPUT)
 

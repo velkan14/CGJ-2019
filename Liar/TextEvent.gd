@@ -1,6 +1,8 @@
 extends Area2D
 
-export var text : String = ""
+export var text_entries : PoolStringArray
+export var disable_afterwards : bool = true
+var disabled : bool = false
 var text_box : TextBox
 var parent
 
@@ -9,8 +11,11 @@ func _ready():
 	parent = get_parent()
 	
 func _on_TextEvent_body_entered(body):
-	if body.is_in_group("player"):
+	if not disabled and body.is_in_group("player"):
 		get_tree().set_pause(true)
-		text_box.write_text(text)
-		yield(text_box, "text_accepted")
+		for text in text_entries:
+			text_box.write_text(text)
+			yield(text_box, "text_accepted")
 		get_tree().set_pause(false)
+		if disable_afterwards:
+			disabled = true
