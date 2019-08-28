@@ -23,4 +23,5 @@ func _on_died_enemy(enemy):
 		emit_signal("all_enemies_died")
 
 
-
+func _on_EnemiesArea_body_exited(body):
+	pass # Replace with function body.
