@@ -32,7 +32,6 @@ func _process(delta):
 
 func write_text(text : String):
 	var char_time = 0.04
-	print(text.length())
 	if text.length() > 50:
 		char_time = 0.02
 	self.show()

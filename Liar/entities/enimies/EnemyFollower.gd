@@ -23,3 +23,9 @@ func _on_VisionArea_body_exited(body):
 	following = false
 	moveDirection = Vector2()
 	emit_signal("lost", body)
+
+
+func _on_CollisionArea_body_entered(body):
+	if body.is_in_group("player"):
+		pass
+#		body.hit(0.5)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://entities/enimies/EnemyFollower.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -8,6 +8,9 @@ radius = 30.0
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 150.0
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 35.0
 
 [node name="EnemyFollower" type="KinematicBody2D"]
 modulate = Color( 1, 0, 0, 1 )
@@ -24,5 +27,11 @@ editor/display_folded = true
 
 [node name="Collision" type="CollisionShape2D" parent="VisionArea"]
 shape = SubResource( 2 )
+
+[node name="CollisionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
+shape = SubResource( 3 )
 [connection signal="body_entered" from="VisionArea" to="." method="_on_VisionArea_body_entered"]
 [connection signal="body_exited" from="VisionArea" to="." method="_on_VisionArea_body_exited"]
+[connection signal="body_entered" from="CollisionArea" to="." method="_on_CollisionArea_body_entered"]
