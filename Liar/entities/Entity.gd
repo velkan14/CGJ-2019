@@ -4,11 +4,6 @@ class_name Entity
 
 signal died(entity)
 
-onready var isShooting = false
-onready var projectile = preload("res://others/Projectile.tscn") 
-onready var rot = $Rotation
-onready var shoot_pos = $Rotation/ShootPosition
-
 export var speed = 250
 
 onready var collision : CollisionShape2D = $Collision
@@ -16,11 +11,9 @@ onready var collision : CollisionShape2D = $Collision
 var health : float = 5.0
 var isDead : bool = false
 var moveDirection : Vector2 = Vector2()
+var look_direction : Vector2 = Vector2()
 
 func _physics_process(delta):
-	var shoot = Input.is_action_pressed("attack")
-	if shoot and !isShooting:
-		startShooting()
 	if not isDead:
 		moveInputs()
 		move()
@@ -32,6 +25,9 @@ func moveInputs():
 	var up = Input.is_action_pressed("ui_up")
 	
 	moveDirection = Vector2(-int(left) + int(right), -int(up) + int (down))
+	
+	if not moveDirection == Vector2():
+		look_direction = moveDirection
 
 func take_damage(amount : float):
 	health -= amount
@@ -44,18 +40,4 @@ func take_damage(amount : float):
 func move():
 	var dir = moveDirection.normalized() * speed
 	move_and_slide(dir)
-	if moveDirection.y > 0 and rot.rotation != 0:
-		rot.rotation_degrees = 0
-	if moveDirection.y < 0 and rot.rotation != 180:
-		rot.rotation_degrees = 180
-	if moveDirection.x > 0 and rot.rotation != 90:
-		rot.rotation_degrees = 90
-	if moveDirection.x < 0 and rot.rotation != -90:
-		rot.rotation_degrees = -90
-
-
-func startShooting():
-	var newProjectile = projectile.instance()
-	add_child(newProjectile)
-	newProjectile.position = shoot_pos.position
 	

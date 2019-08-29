@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://entities/Directions.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://MonstersArea.tscn" type="PackedScene" id=5]
 [ext_resource path="res://TextEvent.tscn" type="PackedScene" id=6]
 [ext_resource path="res://TextBox.tscn" type="PackedScene" id=7]
+[ext_resource path="res://others/Door.tscn" type="PackedScene" id=8]
+[ext_resource path="res://others/PlateTrigger.tscn" type="PackedScene" id=9]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -90,3 +92,13 @@ editor/display_folded = true
 [node name="TextBox" parent="HUD" instance=ExtResource( 7 )]
 visible = false
 margin_bottom = -2.0
+
+[node name="Door" parent="." instance=ExtResource( 8 )]
+position = Vector2( 799.966, 289.487 )
+rotation = 1.5708
+
+[node name="PlateTrigger" parent="." instance=ExtResource( 9 )]
+position = Vector2( 737.933, 192.56 )
+
+[node name="Projectiles" type="Position2D" parent="."]
+[connection signal="pressed" from="PlateTrigger" to="Door" method="open"]
