@@ -6,8 +6,10 @@ signal died(entity)
 
 onready var isShooting = false
 onready var projectile = preload("res://others/Projectile.tscn") 
+onready var rot = $Rotation
+onready var shoot_pos = $Rotation/ShootPosition
 
-export var speed = 100
+export var speed = 250
 
 onready var collision : CollisionShape2D = $Collision
 
@@ -42,16 +44,18 @@ func take_damage(amount : float):
 func move():
 	var dir = moveDirection.normalized() * speed
 	move_and_slide(dir)
-	if moveDirection.y > 0 & $Rotation.rotation != 0:
-		$Rotation.rotation_degrees = 0
-	if moveDirection.y < 0 & $Rotation.rotation != 180:
-		$Rotation.rotation_degrees = 180
-	if moveDirection.x > 0 & $Rotation.rotation != 90:
-		$Rotation.rotation_degrees = 90
-	if moveDirection.x < 0 & $Rotation.rotation != -90:
-		$Rotation.rotation_degrees = -90
+	if moveDirection.y > 0 and rot.rotation != 0:
+		rot.rotation_degrees = 0
+	if moveDirection.y < 0 and rot.rotation != 180:
+		rot.rotation_degrees = 180
+	if moveDirection.x > 0 and rot.rotation != 90:
+		rot.rotation_degrees = 90
+	if moveDirection.x < 0 and rot.rotation != -90:
+		rot.rotation_degrees = -90
 
 
 func startShooting():
-	var newProjectile = add_child(projectile.instance())
-	$Projectile.position = $ShootingPosition.position
+	var newProjectile = projectile.instance()
+	add_child(newProjectile)
+	newProjectile.position = shoot_pos.position
+	

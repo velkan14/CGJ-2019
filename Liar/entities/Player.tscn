@@ -19,7 +19,7 @@ texture = ExtResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="Rotation" type="Node2D" parent="."]
+[node name="Rotation" type="Position2D" parent="."]
 
-[node name="ShootPosition" type="Node2D" parent="Rotation"]
+[node name="ShootPosition" type="Position2D" parent="Rotation"]
 position = Vector2( 0, -45 )
