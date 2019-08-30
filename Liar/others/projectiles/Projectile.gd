@@ -12,9 +12,8 @@ func _physics_process(delta):
 
 func _on_HitBox_body_entered(body):
 	if body.is_in_group("enemy"):
-		#body.hit(0.5)
+		body.take_damage(1)
 		queue_free()
 
 func _on_VisibilityNotifier2D_screen_exited():
-	print("EXIT")
 	queue_free()

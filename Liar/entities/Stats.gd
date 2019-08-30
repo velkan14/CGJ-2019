@@ -1,5 +1,7 @@
 extends Node
 
+class_name Stats
+
 signal health_changed(new_health)
 signal damage_taken(new_health)
 signal health_depleted()
