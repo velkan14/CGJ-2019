@@ -1,13 +1,88 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://entities/player/Player.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://sprites/esquerda3.png" type="Texture" id=2]
 [ext_resource path="res://others/projectiles/ProjectileSpawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://entities/Stats.tscn" type="PackedScene" id=4]
 [ext_resource path="res://entities/player/Shield.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sprites/frente2.png" type="Texture" id=6]
+[ext_resource path="res://sprites/frente3.png" type="Texture" id=7]
+[ext_resource path="res://sprites/esquerda2.png" type="Texture" id=8]
+[ext_resource path="res://sprites/direita2.png" type="Texture" id=9]
+[ext_resource path="res://sprites/direita3.png" type="Texture" id=10]
+[ext_resource path="res://sprites/costas2.png" type="Texture" id=11]
+[ext_resource path="res://sprites/costas3.png" type="Texture" id=12]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 31.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "walkDown"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 2.82843, 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ), ExtResource( 7 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "walkLeft"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 8 ), ExtResource( 2 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "walkRight"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 9 ), ExtResource( 10 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "walkUp"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 11 ), ExtResource( 12 ) ]
+}
 
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
@@ -27,3 +102,10 @@ texture = ExtResource( 2 )
 max_health = 6
 
 [node name="Shield" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/walkDown = SubResource( 2 )
+anims/walkLeft = SubResource( 3 )
+anims/walkRight = SubResource( 4 )
+anims/walkUp = SubResource( 5 )
