@@ -26,5 +26,5 @@ func _on_died_enemy(enemy):
 func _on_EnemiesArea_body_exited(body):
 	if body.is_in_group("enemy"):
 		body.disconnect("died", self, "_on_died_enemy")
-		enemies.remove(body)
+		enemies.erase(body)
 	

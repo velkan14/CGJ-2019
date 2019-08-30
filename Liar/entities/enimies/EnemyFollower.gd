@@ -33,10 +33,11 @@ func _on_VisionArea_body_entered(body):
 
 
 func _on_VisionArea_body_exited(body):
-	target = null
-	following = false
-	moveDirection = Vector2()
-	emit_signal("lost", body)
+	if body.is_in_group("player"):
+		target = null
+		following = false
+		moveDirection = Vector2()
+		emit_signal("lost", body)
 
 
 func _on_CollisionArea_body_entered(body):

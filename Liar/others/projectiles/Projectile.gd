@@ -12,9 +12,9 @@ func _physics_process(delta):
 		queue_free()
 
 	var motion = direction * SPEED * delta
-	var collision_info = move_and_collide(motion)
-	if collision_info:
-		queue_free()
+	var collision_info = move_and_slide(direction * SPEED)
+	#if collision_info:
+	#	queue_free()
 
 func is_outside_view_bounds():
 	return position.x > OS.get_screen_size().x or position.x < 0.0 \
@@ -22,3 +22,9 @@ func is_outside_view_bounds():
 
 func _draw():
 	draw_circle(Vector2(), $CollisionShape2D.shape.radius, Color('#ffffff'))
+
+
+func _on_HitBox_body_entered(body):
+	if body.is_in_group("enemy"):
+		#body.hit(0.5)
+		queue_free()
