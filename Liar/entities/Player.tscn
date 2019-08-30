@@ -10,7 +10,6 @@ radius = 31.0
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
 ]]
-editor/display_folded = true
 collision_mask = 2
 script = ExtResource( 1 )
 
