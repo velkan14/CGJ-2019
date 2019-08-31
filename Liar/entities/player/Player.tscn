@@ -22,11 +22,10 @@ position = Vector2( 0, 6.59445 )
 shape = SubResource( 1 )
 
 [node name="SpriteAnim" parent="." instance=ExtResource( 2 )]
-editor/display_folded = true
 frame = 40
 
 [node name="ProjectileSpawner" parent="." instance=ExtResource( 3 )]
-position = Vector2( 7.29176, 1.71146 )
+position = Vector2( -2.57646, 2.44244 )
 
 [node name="Stats" parent="." instance=ExtResource( 4 )]
 max_health = 3

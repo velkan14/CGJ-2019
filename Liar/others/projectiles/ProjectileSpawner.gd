@@ -15,6 +15,8 @@ var new_bullet
 
 func _physics_process(delta):
 	if isShooting:
+		if new_bullet != null:
+			new_bullet.position = position
 		if Input.is_action_pressed("attack"):
 			if charge_timer.is_stopped():
 				if new_bullet.currentLevel < 4:
@@ -36,6 +38,7 @@ func startFire():
 	yield(anim_shoot, "animation_finished")
 	new_bullet = projectile.instance()
 	new_bullet.position = position
+	new_bullet.call_deferred("nextCharge")
 	get_parent().add_child(new_bullet)
 	isShooting = true
 
