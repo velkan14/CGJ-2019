@@ -16,16 +16,18 @@ radius = 5.0
 ]]
 collision_mask = 2
 script = ExtResource( 1 )
+speed = 120
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 6.59445 )
 shape = SubResource( 1 )
 
 [node name="SpriteAnim" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
 frame = 40
 
 [node name="ProjectileSpawner" parent="." instance=ExtResource( 3 )]
-position = Vector2( -2.57646, 2.44244 )
+position = Vector2( 7.29176, 1.71146 )
 
 [node name="Stats" parent="." instance=ExtResource( 4 )]
 max_health = 3
@@ -38,5 +40,6 @@ visible = false
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/take_damage = ExtResource( 7 )
 [connection signal="change_move" from="." to="SpriteAnim" method="_on_Player_change_move"]
+[connection signal="died" from="." to="." method="_on_Player_died"]
 
 [editable path="SpriteAnim"]

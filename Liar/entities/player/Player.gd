@@ -6,6 +6,7 @@ signal change_move(direction)
 
 var lastMoveDirection : Vector2 = Vector2()
 
+
 func moveInputs():
 	var left = Input.is_action_pressed("ui_left")
 	var right = Input.is_action_pressed("ui_right")
@@ -24,3 +25,7 @@ func moveInputs():
 
 func explode():
 	stats.take_damage(10000)
+
+func _process(delta):
+	if isDead:
+		get_tree().change_scene("res://Test.tscn")
