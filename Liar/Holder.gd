@@ -9,7 +9,6 @@ func _ready():
 		if number_objects == max_objects:
 			break
 		var rand = randi()%2+1
-		print(rand)
 		if rand == 1:
 			child.queue_free()
 		else:

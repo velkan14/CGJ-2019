@@ -9,7 +9,7 @@ var parent
 func _ready():
 	text_box = get_node("../HUD/TextBox")
 	parent = get_parent()
-	
+
 func _on_TextEvent_body_entered(body):
 	if not disabled and body.is_in_group("player"):
 		get_tree().set_pause(true)

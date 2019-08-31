@@ -21,4 +21,6 @@ func moveInputs():
 		emit_signal("change_move", moveDirection)
 	
 	lastMoveDirection = moveDirection
-	
+
+func explode():
+	stats.take_damage(10000)
