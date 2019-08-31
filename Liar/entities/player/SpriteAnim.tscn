@@ -1,0 +1,231 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://sprites/player.png" type="Texture" id=1]
+[ext_resource path="res://entities/player/SpriteAnim.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle_down"
+length = 0.2
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0 ],
+"method": "set_frame_h"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle_left"
+length = 0.2
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 6 ],
+"method": "set_frame_h"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle_right"
+length = 0.2
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 9 ],
+"method": "set_frame_h"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "idle_up"
+length = 0.2
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 3 ],
+"method": "set_frame_h"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "walk_down"
+length = 0.6
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 1 ],
+"method": "set_frame_h"
+}, {
+"args": [ 2 ],
+"method": "set_frame_h"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "walk_left"
+length = 0.6
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 7 ],
+"method": "set_frame_h"
+}, {
+"args": [ 8 ],
+"method": "set_frame_h"
+} ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "walk_right"
+length = 0.6
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 10 ],
+"method": "set_frame_h"
+}, {
+"args": [ 11 ],
+"method": "set_frame_h"
+} ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "walk_up"
+length = 0.6
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 4 ],
+"method": "set_frame_h"
+}, {
+"args": [ 5 ],
+"method": "set_frame_h"
+} ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "idle"
+length = 0.2
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0 ],
+"method": "set_frame_v"
+} ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "shoot"
+length = 0.2
+step = 0.05
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [ 0 ],
+"method": "set_frame_v"
+}, {
+"args": [ 1 ],
+"method": "set_frame_v"
+}, {
+"args": [ 2 ],
+"method": "set_frame_v"
+}, {
+"args": [ 3 ],
+"method": "set_frame_v"
+} ]
+}
+
+[node name="SpriteAnim" type="Sprite"]
+texture = ExtResource( 1 )
+vframes = 6
+hframes = 12
+frame = 5
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/idle_down = SubResource( 1 )
+anims/idle_left = SubResource( 2 )
+anims/idle_right = SubResource( 3 )
+anims/idle_up = SubResource( 4 )
+anims/walk_down = SubResource( 5 )
+anims/walk_left = SubResource( 6 )
+anims/walk_right = SubResource( 7 )
+anims/walk_up = SubResource( 8 )
+
+[node name="AnimationShoot" type="AnimationPlayer" parent="."]
+anims/idle = SubResource( 9 )
+anims/shoot = SubResource( 10 )

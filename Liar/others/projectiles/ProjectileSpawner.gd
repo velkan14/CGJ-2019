@@ -1,5 +1,7 @@
 extends Node2D
 
+onready var anim_shoot : AnimationPlayer = get_node("../SpriteAnim/AnimationShoot")
+
 var projectile = preload("Projectile.tscn")
 onready var cooldown_timer = $CooldownTimer
 func _input(event):
@@ -9,8 +11,13 @@ func _input(event):
 func fire(direction):
 	if not cooldown_timer.is_stopped():
 		return
-
+	anim_shoot.play("shoot")
+	yield(anim_shoot, "animation_finished")
 	cooldown_timer.start()
 	var new_bullet = projectile.instance()
-	new_bullet.direction = direction
+	new_bullet.direction = owner.look_direction
 	add_child(new_bullet)
+	anim_shoot.play_backwards("shoot")
+	yield(anim_shoot, "animation_finished")
+	anim_shoot.play_backwards("idle")
+	

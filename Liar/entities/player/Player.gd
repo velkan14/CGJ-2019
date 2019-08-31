@@ -2,6 +2,10 @@ extends Entity
 
 class_name Player
 
+signal change_move(direction)
+
+var lastMoveDirection : Vector2 = Vector2()
+
 func moveInputs():
 	var left = Input.is_action_pressed("ui_left")
 	var right = Input.is_action_pressed("ui_right")
@@ -12,3 +16,9 @@ func moveInputs():
 	
 	if not moveDirection == Vector2():
 		look_direction = moveDirection
+	
+	if lastMoveDirection != moveDirection:
+		emit_signal("change_move", moveDirection)
+	
+	lastMoveDirection = moveDirection
+	

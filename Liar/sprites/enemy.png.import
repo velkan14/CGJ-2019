@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/A_right_w_1.png-8f43fec4e63c8380c5f202a873baba2f.stex"
+path="res://.import/enemy.png-03f80dfd1208a1b3024d79304d31759f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Attack/A_right_w_1.png"
-dest_files=[ "res://.import/A_right_w_1.png-8f43fec4e63c8380c5f202a873baba2f.stex" ]
+source_file="res://sprites/enemy.png"
+dest_files=[ "res://.import/enemy.png-03f80dfd1208a1b3024d79304d31759f.stex" ]
 
 [params]
 

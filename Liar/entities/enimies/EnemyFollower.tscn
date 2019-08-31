@@ -1,22 +1,194 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://entities/enimies/EnemyFollower.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://entities/Stats.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/enemy.png" type="Texture" id=2]
+[ext_resource path="res://entities/player/SpriteAnim.gd" type="Script" id=3]
+[ext_resource path="res://entities/Stats.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 30.0
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="Animation" id=9]
+resource_name = "idle_down"
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 0 ],
+"method": "set_frame_h"
+}, {
+"args": [ 1 ],
+"method": "set_frame_h"
+} ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "idle_left"
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 4 ],
+"method": "set_frame_h"
+}, {
+"args": [ 5 ],
+"method": "set_frame_h"
+} ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "idle_right"
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 6 ],
+"method": "set_frame_h"
+}, {
+"args": [ 7 ],
+"method": "set_frame_h"
+} ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "idle_up"
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 2 ],
+"method": "set_frame_h"
+}, {
+"args": [ 3 ],
+"method": "set_frame_h"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "walk_down"
+length = 0.6
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 0 ],
+"method": "set_frame_h"
+}, {
+"args": [ 1 ],
+"method": "set_frame_h"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "walk_left"
+length = 0.6
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 4 ],
+"method": "set_frame_h"
+}, {
+"args": [ 5 ],
+"method": "set_frame_h"
+} ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "walk_right"
+length = 0.6
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 6 ],
+"method": "set_frame_h"
+}, {
+"args": [ 7 ],
+"method": "set_frame_h"
+} ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "walk_up"
+length = 0.6
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 2 ],
+"method": "set_frame_h"
+}, {
+"args": [ 3 ],
+"method": "set_frame_h"
+} ]
+}
+
+[sub_resource type="CircleShape2D" id=4]
 radius = 150.0
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=5]
 radius = 35.0
 
 [node name="EnemyFollower" type="KinematicBody2D" groups=[
 "enemy",
 ]]
-modulate = Color( 1, 0, 0, 1 )
 collision_layer = 2
 script = ExtResource( 1 )
 speed = 200
@@ -24,23 +196,41 @@ speed = 200
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="SpriteAnim" type="Sprite" parent="."]
 texture = ExtResource( 2 )
+vframes = 4
+hframes = 8
+script = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteAnim"]
+anims/idle_down = SubResource( 9 )
+anims/idle_left = SubResource( 10 )
+anims/idle_right = SubResource( 11 )
+anims/idle_up = SubResource( 12 )
+anims/walk_down = SubResource( 3 )
+anims/walk_left = SubResource( 6 )
+anims/walk_right = SubResource( 7 )
+anims/walk_up = SubResource( 8 )
+
+[node name="AnimationShoot" type="AnimationPlayer" parent="SpriteAnim"]
 
 [node name="VisionArea" type="Area2D" parent="."]
 editor/display_folded = true
+visible = false
 
 [node name="Collision" type="CollisionShape2D" parent="VisionArea"]
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="CollisionArea" type="Area2D" parent="."]
 editor/display_folded = true
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
-[node name="Stats" parent="." instance=ExtResource( 3 )]
+[node name="Stats" parent="." instance=ExtResource( 4 )]
 max_health = 2
+[connection signal="change_move" from="." to="SpriteAnim" method="_on_Player_change_move"]
 [connection signal="body_entered" from="VisionArea" to="." method="_on_VisionArea_body_entered"]
 [connection signal="body_exited" from="VisionArea" to="." method="_on_VisionArea_body_exited"]
 [connection signal="body_entered" from="CollisionArea" to="." method="_on_CollisionArea_body_entered"]
