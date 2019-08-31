@@ -9,7 +9,7 @@
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
-frame = 4
+frame = 3
 
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 2 )
