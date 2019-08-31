@@ -1,23 +1,55 @@
 extends Node2D
 
+signal shoot
+signal upgradeShoot
+
 onready var anim_shoot : AnimationPlayer = get_node("../SpriteAnim/AnimationShoot")
+onready var cooldown_timer = $CooldownTimer
+onready var charge_timer = $ChargeTimer
 
 var projectile = preload("Projectile.tscn")
-onready var cooldown_timer = $CooldownTimer
-func _input(event):
-	if event.is_action_pressed("attack") and owner.look_direction != Vector2():
-		fire(owner.look_direction)
+var isShooting = false
+var new_bullet
 
-func fire(direction):
+
+
+func _physics_process(delta):
+	if isShooting:
+		if Input.is_action_pressed("attack"):
+			if charge_timer.is_stopped():
+				print("charge")
+				if new_bullet.currentLevel < 4:
+					charge_timer.start()
+				else:
+					fire()
+		else:
+			fire()
+
+func _input(event):
+	if !isShooting:
+		if event.is_action_pressed("attack") and owner.look_direction != Vector2():
+			startFire()
+
+func startFire():
 	if not cooldown_timer.is_stopped():
 		return
 	anim_shoot.play("shoot")
 	yield(anim_shoot, "animation_finished")
-	cooldown_timer.start()
-	var new_bullet = projectile.instance()
+	new_bullet = projectile.instance()
+	new_bullet.position = position
+	get_parent().add_child(new_bullet)
+	isShooting = true
+
+func fire():
+	if !charge_timer.is_stopped():
+		charge_timer.stop()
+	isShooting = false
+	new_bullet.fire()
 	new_bullet.direction = owner.look_direction
-	add_child(new_bullet)
 	anim_shoot.play_backwards("shoot")
+	cooldown_timer.start()
 	yield(anim_shoot, "animation_finished")
 	anim_shoot.play_backwards("idle")
-	
+
+func _on_ChargeTimer_timeout():
+	new_bullet.nextCharge()
