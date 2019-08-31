@@ -20,6 +20,18 @@ tracks/0/keys = {
 "method": "set_frame_h"
 } ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("../ProjectileSpawner:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -8.58567, 2.43455 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "idle_left"
@@ -37,6 +49,18 @@ tracks/0/keys = {
 "args": [ 6 ],
 "method": "set_frame_h"
 } ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../ProjectileSpawner:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -2.57646, 2.44244 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -56,6 +80,18 @@ tracks/0/keys = {
 "method": "set_frame_h"
 } ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("../ProjectileSpawner:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.566751, 2.51554 ) ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "idle_up"
@@ -73,6 +109,18 @@ tracks/0/keys = {
 "args": [ 3 ],
 "method": "set_frame_h"
 } ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../ProjectileSpawner:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 7.29176, 1.71146 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -210,6 +258,7 @@ tracks/0/keys = {
 }
 
 [node name="SpriteAnim" type="Sprite"]
+position = Vector2( -1, 0 )
 texture = ExtResource( 1 )
 vframes = 6
 hframes = 12
