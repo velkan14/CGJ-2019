@@ -33,8 +33,7 @@ func _on_VisionArea_body_exited(body):
 		moveDirection = Vector2()
 		emit_signal("lost", body)
 
-
 func _on_CollisionArea_body_entered(body):
-	if body.is_in_group("player"):
-		body.take_damage(0.5)
+	if body.is_in_group("player") and not isDead:
+		body.take_damage(1)
 

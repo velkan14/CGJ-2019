@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://sprites/explosion.png" type="Texture" id=1]
+[ext_resource path="res://others/Explosion.gd" type="Script" id=2]
+[ext_resource path="res://sprites/Explosion.tres" type="Animation" id=3]
+
+[node name="Sprite" type="Sprite"]
+texture = ExtResource( 1 )
+vframes = 4
+hframes = 4
+script = ExtResource( 2 )
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+anims/Explosion = ExtResource( 3 )

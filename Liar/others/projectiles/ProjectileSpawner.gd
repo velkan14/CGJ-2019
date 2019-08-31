@@ -17,7 +17,6 @@ func _physics_process(delta):
 	if isShooting:
 		if Input.is_action_pressed("attack"):
 			if charge_timer.is_stopped():
-				print("charge")
 				if new_bullet.currentLevel < 4:
 					charge_timer.start()
 				else:

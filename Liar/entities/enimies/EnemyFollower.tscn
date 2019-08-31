@@ -1,9 +1,12 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://entities/enimies/EnemyFollower.gd" type="Script" id=1]
-[ext_resource path="res://sprites/enemy.png" type="Texture" id=2]
-[ext_resource path="res://entities/player/SpriteAnim.gd" type="Script" id=3]
-[ext_resource path="res://entities/Stats.tscn" type="PackedScene" id=4]
+[ext_resource path="res://others/Explosion.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/enemy.png" type="Texture" id=3]
+[ext_resource path="res://entities/player/SpriteAnim.gd" type="Script" id=4]
+[ext_resource path="res://sprites/Explosion.tres" type="Animation" id=5]
+[ext_resource path="res://entities/Stats.tscn" type="PackedScene" id=6]
+[ext_resource path="res://others/take_damage.tres" type="Animation" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.0
@@ -180,6 +183,7 @@ tracks/0/keys = {
 radius = 150.0
 
 [sub_resource type="CircleShape2D" id=11]
+radius = 12.0
 
 [node name="EnemyFollower" type="KinematicBody2D" groups=[
 "enemy",
@@ -188,18 +192,22 @@ collision_layer = 2
 script = ExtResource( 1 )
 speed = 200
 
+[node name="Explosion" parent="." instance=ExtResource( 2 )]
+visible = false
+
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 3.87817 )
 shape = SubResource( 1 )
 
 [node name="SpriteAnim" type="Sprite" parent="."]
 editor/display_folded = true
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 vframes = 4
 hframes = 8
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteAnim"]
+anims/Explosion = ExtResource( 5 )
 anims/idle_down = SubResource( 2 )
 anims/idle_left = SubResource( 3 )
 anims/idle_right = SubResource( 4 )
@@ -220,12 +228,16 @@ shape = SubResource( 10 )
 
 [node name="CollisionArea" type="Area2D" parent="."]
 editor/display_folded = true
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
 shape = SubResource( 11 )
 
-[node name="Stats" parent="." instance=ExtResource( 4 )]
+[node name="Stats" parent="." instance=ExtResource( 6 )]
 max_health = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/take_damage = ExtResource( 7 )
 [connection signal="change_move" from="." to="SpriteAnim" method="_on_Player_change_move"]
 [connection signal="body_entered" from="VisionArea" to="." method="_on_VisionArea_body_entered"]
 [connection signal="body_exited" from="VisionArea" to="." method="_on_VisionArea_body_exited"]

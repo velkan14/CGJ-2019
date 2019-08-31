@@ -19,13 +19,11 @@ func _physics_process(delta):
 
 func _on_HitBox_body_entered(body):
 	if body.is_in_group("enemy"):
-		body.take_damage(1)
-		print(body.name)
+		body.take_damage(1 + currentLevel)
 		queue_free()
 
 func _on_VisibilityNotifier2D_screen_exited():
-	print("exit")
-	#queue_free()
+	queue_free()
 
 func nextCharge():
 	if currentLevel < 4:
@@ -35,7 +33,6 @@ func nextCharge():
 
 func fire():
 	set_as_toplevel(true)
-	print(get_parent().position)
 	position = get_parent().position 
 	hitbox_collision.disabled = false
 	isMoving = true
